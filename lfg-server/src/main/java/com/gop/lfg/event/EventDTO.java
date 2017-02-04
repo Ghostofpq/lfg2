@@ -12,6 +12,7 @@ import java.util.Set;
 class EventDTO {
     @Id
     private String id;
+    private int version;
 
     private String name;
     private String description;
