@@ -9,6 +9,6 @@ import org.junit.runner.RunWith;
  */
 
 @RunWith(Cucumber.class)
-@CucumberOptions(plugin = {"pretty", "html:target/cucumber"})
+@CucumberOptions(features = "src/test/resources/features", glue = "com.gop.lfg.steps")
 public class IntegrationTests {
 }
