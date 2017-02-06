@@ -27,6 +27,13 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>com.gop.lfg</groupId>
+                <artifactId>lfg-server</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
+            <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
                 <version>${spring.starter.version}</version>
@@ -45,6 +52,12 @@
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-mongodb</artifactId>
                 <version>${spring.data.mongodb}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>21.0</version>
             </dependency>
 
             <dependency>

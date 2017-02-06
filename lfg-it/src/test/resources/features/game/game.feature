@@ -1,10 +1,6 @@
 Feature: Games
 
   Scenario: Game creation
-    Given the following game exists
-      | field1 | field2 |
-
-    Given the following games exist
-      | field1 | field2 |
-      | field3 | field4 |
-      | field5 | field6 |
+    When the following game is created
+      | UNO | a shitty game | 2 | 8 |
+    Then the response has status code 201
