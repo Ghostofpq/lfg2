@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
+import java.util.List;
 
 @RestController("/games")
 public class GameController {
@@ -13,7 +14,7 @@ public class GameController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(method = RequestMethod.POST)
-    public GameDTO createGame(@RequestBody final Game gameCreationRequest) {
+    public GameDTO createGame(@RequestBody final Game gameCreationRequest) throws GameAlreadyExistsException {
         return gameService.create(gameCreationRequest);
     }
 
@@ -25,8 +26,10 @@ public class GameController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.GET)
-    public GameDTO getGameByName(@RequestParam("name") final String name) throws GameNotFoundException {
-        return gameService.findByName(name);
+    public List<GameDTO> findGames(@RequestParam(name = "name", defaultValue = "") final String name,
+                                   @RequestParam(name = "page", defaultValue = "0") int page,
+                                   @RequestParam(name = "size", defaultValue = "10") int size) throws GameNotFoundException {
+        return gameService.findGames(name, page, size);
     }
 
     @ResponseStatus(HttpStatus.OK)

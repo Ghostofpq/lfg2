@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GameService {
     @Value("${database.game.version}")
@@ -13,24 +15,28 @@ public class GameService {
     @Autowired
     private GameRepository gameRepository;
 
-    public GameDTO create(final Game game) {
-        return gameRepository.save(
-                GameDTO.builder()
-                        .version(version)
+    public GameDTO create(final Game game) throws GameAlreadyExistsException {
+        try {
+            return gameRepository.save(
+                    GameDTO.builder()
+                            .version(version)
 
-                        .name(game.getName())
-                        .description(game.getDescription())
-                        .minPlayers(game.getMinPlayers())
-                        .maxPlayers(game.getMaxPlayers())
-                        .build());
+                            .name(game.getName())
+                            .description(game.getDescription())
+                            .minPlayers(game.getMinPlayers())
+                            .maxPlayers(game.getMaxPlayers())
+                            .build());
+        } catch (RuntimeException e) {
+            throw new GameAlreadyExistsException();
+        }
     }
 
     public GameDTO findById(final String id) {
         return gameRepository.findOne(id);
     }
 
-    public GameDTO findByName(final String name) {
-        return gameRepository.findByName(name);
+    public List<GameDTO> findGames(final String name, final int page, final int size) {
+        return gameRepository.findGames(name, page, size);
     }
 
     public GameDTO update(final String id, final Game game) throws GameNotFoundException {
