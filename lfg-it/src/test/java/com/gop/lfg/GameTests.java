@@ -11,5 +11,5 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/features", glue = "com.gop.lfg.steps")
-public class IntegrationTests {
+public class GameTests {
 }

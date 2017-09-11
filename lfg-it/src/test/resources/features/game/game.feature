@@ -1,6 +1,7 @@
 Feature: Games
 
-  Background: there is no game
+  Background:
+    Given there is no game
 
   Scenario: Game creation
     When the following game is created

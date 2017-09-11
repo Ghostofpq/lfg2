@@ -1,7 +1,7 @@
 package com.gop.lfg.steps.game;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gop.lfg.game.Game;
-import com.gop.lfg.game.GameDTO;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -13,6 +13,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,19 +25,22 @@ public class GameSteps {
 
     private TestRestTemplate restTemplate = new TestRestTemplate();
     private ResponseEntity currentResponse = null;
+    private ObjectMapper mapper = new ObjectMapper();
+
 
     private String baseUrl = "http://localhost:8080";
 
     @Given("^there is no game")
     public void delete_all_existing_games() {
-        currentResponse = restTemplate.getForEntity(
+        ResponseEntity<List> currentResponse = restTemplate.getForEntity(
                 baseUrl + "/games",
                 List.class
         );
+        this.currentResponse = currentResponse;
+
         Assert.assertEquals(200, currentResponse.getStatusCode().value());
 
-        List<GameDTO> existingGames = (List<GameDTO>) currentResponse.getBody();
-        existingGames.forEach(gameDTO -> delete_game_by_id(gameDTO.getId()));
+        currentResponse.getBody().forEach(o -> delete_game_by_id((String) ((LinkedHashMap) o).get("id")));
     }
 
     @Given("the following games exist")
@@ -70,13 +74,13 @@ public class GameSteps {
         currentResponse =
                 restTemplate.getForEntity(
                         baseUrl + "/games",
-                        Game.class,
+                        List.class,
                         params
                 );
     }
 
     public void delete_game_by_id(String id) {
-        restTemplate.delete(baseUrl + "/games/" + id);
+        restTemplate.delete(baseUrl + "/game/" + id);
     }
 
     @Then("^the response has status code (\\d+)$")
