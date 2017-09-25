@@ -21,6 +21,7 @@ class EventDTO {
     private long timestampEnd;
 
     private Set<String> games;
+    private Set<String> owners;
     private Set<String> participants;
 
     private GeoJsonPoint location;

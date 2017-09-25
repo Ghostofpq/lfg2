@@ -6,10 +6,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController()
+@RestController
 public class GameController {
-    @Autowired
     private GameService gameService;
+
+    @Autowired
+    public GameController(final GameService gameService) {
+        this.gameService = gameService;
+    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/games", method = RequestMethod.POST)
@@ -20,8 +24,8 @@ public class GameController {
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/games", method = RequestMethod.GET)
     public List<GameDTO> findGames(@RequestParam(name = "name", defaultValue = "") final String name,
-                                   @RequestParam(name = "page", defaultValue = "0") int page,
-                                   @RequestParam(name = "size", defaultValue = "10") int size) throws GameNotFoundException {
+                                   @RequestParam(name = "page", defaultValue = "0") final int page,
+                                   @RequestParam(name = "size", defaultValue = "10") final int size) throws GameNotFoundException {
         return gameService.findGames(name, page, size);
     }
 

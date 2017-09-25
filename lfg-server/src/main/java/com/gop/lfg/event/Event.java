@@ -15,5 +15,6 @@ public class Event {
     private LocalDateTime endDate;
 
     private Set<Game> games;
+    private Set<Player> owners;
     private Set<Player> participants;
 }
