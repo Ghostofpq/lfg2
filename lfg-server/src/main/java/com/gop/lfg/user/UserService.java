@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.crypto.keygen.KeyGenerators;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserService {
     private UserRepository userRepository;
     private ShaPasswordEncoder shaPasswordEncoder;
@@ -12,7 +14,8 @@ public class UserService {
     private int version;
 
     @Autowired
-    public UserService(final UserRepository userRepository, final ShaPasswordEncoder shaPasswordEncoder) {
+    public UserService(final UserRepository userRepository) {
+        shaPasswordEncoder = new ShaPasswordEncoder();
         this.userRepository = userRepository;
     }
 

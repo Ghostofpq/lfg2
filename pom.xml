@@ -14,10 +14,8 @@
     </modules>
 
     <properties>
-        <java.version>9</java.version>
+        <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>9</maven.compiler.source>
-        <maven.compiler.target>9</maven.compiler.target>
 
         <lombok.version>1.16.12</lombok.version>
         <slf4j.version>1.7.22</slf4j.version>
@@ -52,6 +50,11 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-security</artifactId>
+                <version>${spring.starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-thymeleaf</artifactId>
                 <version>${spring.starter.version}</version>
             </dependency>
             <dependency>
