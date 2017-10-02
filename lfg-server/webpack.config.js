@@ -1,4 +1,5 @@
 var path = require('path');
+const WebpackShellPlugin = require('webpack-shell-plugin');
 
 module.exports = {
     entry: './src/main/js/app.js',
@@ -9,6 +10,9 @@ module.exports = {
         path: __dirname,
         filename: './src/main/resources/static/built/bundle.js'
     },
+    plugins: [
+        new WebpackShellPlugin({onBuildEnd: ['cp src/main/resources/static/built/* target/classes/static/built/']})
+    ],
     module: {
         loaders: [
             {
@@ -20,6 +24,7 @@ module.exports = {
                     presets: ['es2015', 'react']
                 }
             }
-        ]
+        ],
+
     }
 };

@@ -2,18 +2,15 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 
 class App extends React.Component {
-
 	constructor(props) {
 		super(props);
 	}
 
-	componentDidMount() {
-
-	}
+	componentDidMount() {}
 
 	render() {
 		return (
-		    <h1>"YOLO"</h1>
+		    <h1>MISE A JOUR EN DIRECT MA GUEULE!!</h1>
 		)
 	}
 }
