@@ -10,7 +10,7 @@ class App extends React.Component {
 
 	render() {
 		return (
-		    <h1>MISE A JOUR EN DIRECT MA GUEULE!!</h1>
+		    <h1>Livereload is cool</h1>
 		)
 	}
 }

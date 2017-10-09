@@ -11,7 +11,13 @@ module.exports = {
         filename: './src/main/resources/static/built/bundle.js'
     },
     plugins: [
-        new WebpackShellPlugin({onBuildEnd: ['cp src/main/resources/static/built/* target/classes/static/built/']})
+        new WebpackShellPlugin({
+            onBuildExit: [
+                'echo "Transfering files ... "',
+                'cp -r src/main/resources/static/built/* target/classes/static/built/',
+                'echo "DONE ... "'
+            ]
+        })
     ],
     module: {
         loaders: [
