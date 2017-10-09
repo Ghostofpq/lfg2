@@ -13,9 +13,7 @@ module.exports = {
     plugins: [
         new WebpackShellPlugin({
             onBuildExit: [
-                'echo "Transfering files ... "',
-                'cp -r src/main/resources/static/built/* target/classes/static/built/',
-                'echo "DONE ... "'
+                'cp -r src/main/resources/static/built/* target/classes/static/built/'
             ]
         })
     ],
