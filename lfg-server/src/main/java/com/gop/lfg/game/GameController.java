@@ -30,19 +30,19 @@ public class GameController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(path = "/api/game/{gameId}", method = RequestMethod.GET)
+    @RequestMapping(path = "/api/games/{gameId}", method = RequestMethod.GET)
     public GameDTO getGame(@PathVariable("gameId") final String id) throws GameNotFoundException {
         return gameService.findById(id);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(path = "/api/game/{gameId}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/api/games/{gameId}", method = RequestMethod.PUT)
     public GameDTO updateGame(@PathVariable("gameId") final String id, @RequestBody final Game gameUpdateRequest) throws GameNotFoundException {
         return gameService.update(id, gameUpdateRequest);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path = "/api/game/{gameId}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/api/games/{gameId}", method = RequestMethod.DELETE)
     public void deleteGame(@PathVariable("gameId") final String id) throws GameNotFoundException {
         gameService.deleteById(id);
     }
