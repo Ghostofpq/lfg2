@@ -6,6 +6,8 @@ import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.crypto.keygen.KeyGenerators;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     private UserRepository userRepository;
@@ -35,6 +37,11 @@ public class UserService {
             throw new UserAlreadyExistsException();
         }
     }
+
+    public List<UserDTO> find(final String login, final int page, final int size) {
+        return userRepository.findAll();
+    }
+
 
     public UserDTO findById(final String id) {
         return userRepository.findOne(id);
