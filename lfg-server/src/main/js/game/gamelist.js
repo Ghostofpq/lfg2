@@ -15,11 +15,8 @@ class GameList extends React.Component {
 			})
 	}
 
-
 	addGameInGameList(game){
-		this.setState(prevState => ({
-			games: [...prevState.games, game]
-		}))
+		this.setState(prevState => ({games: [...prevState.games, game]}))
 	}
 
 	render() {

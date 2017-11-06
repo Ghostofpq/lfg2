@@ -9,15 +9,15 @@ class Game extends React.Component {
 	componentDidMount() {
 		fetch("http://localhost:8080/api/games/" + this.state.id)
 		.then(result=>result.json())
-		.then(game=>			
-			this.state={				
-				name:game.name,
-				description:game.description,		
-			})
+		.then(game=>this.setState({name:game.name,description:game.description}))
 	}
 
 	render() {
-		return (<h1>{this.state.name}</h1>)
+		return (
+			<div>
+				<h1>{this.state.name}</h1>
+				<span>{this.state.description}</span>
+			</div>)
 	}
 };
 export default Game;
