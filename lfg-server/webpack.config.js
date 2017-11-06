@@ -13,6 +13,10 @@ module.exports = {
     plugins: [
         new WebpackShellPlugin({
             onBuildExit: [
+                // WINDOWS CREATION
+                'md target\\classes\\static\\built',
+                // LINUX
+                // 'mkdir -p target/classes/static/built',
                 'cp -r src/main/resources/static/built/* target/classes/static/built/'
             ]
         })
