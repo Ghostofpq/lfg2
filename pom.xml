@@ -21,6 +21,8 @@
         <slf4j.version>1.7.22</slf4j.version>
         <spring.starter.version>1.5.8.RELEASE</spring.starter.version>
         <spring.data.mongodb>1.10.6.RELEASE</spring.data.mongodb>
+
+        <jjwt.version>0.7.0</jjwt.version>
     </properties>
 
     <dependencyManagement>
@@ -56,6 +58,11 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-thymeleaf</artifactId>
                 <version>${spring.starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.data</groupId>

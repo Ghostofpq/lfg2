@@ -38,10 +38,13 @@ public class UserService {
         }
     }
 
+    public UserDTO findOneByLogin(final String login) {
+        return userRepository.findByLogin(login);
+    }
+
     public List<UserDTO> find(final String login, final int page, final int size) {
         return userRepository.findAll();
     }
-
 
     public UserDTO findById(final String id) {
         return userRepository.findOne(id);
